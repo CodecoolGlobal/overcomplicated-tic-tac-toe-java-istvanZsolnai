@@ -1,6 +1,6 @@
 package com.codecool.funfactservice.service;
 
-import lombok.Data;
+import com.codecool.funfactservice.model.FunFactModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -10,15 +10,16 @@ import org.springframework.web.client.RestTemplate;
 public class FunFactService {
 
     @Autowired
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
 
     @Value("${funfact.url}")
     public String funFactUrl;
 
-    public String getRandomFunFact(){
-
-        String funFactResult = restTemplate.getForObject(funFactUrl, String.class);
-        System.out.println(funFactResult);
+    public FunFactModel getRandomFunFact(){
+        System.out.println(funFactUrl);
+        FunFactModel funFactResult = restTemplate.getForObject(funFactUrl, FunFactModel.class);
+        String funFact = funFactResult.value;
+        System.out.println(funFact + "IDENÉZZTGEGEFADWMAKSDASÉD");
         return funFactResult;
     }
 

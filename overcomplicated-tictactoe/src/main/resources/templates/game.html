@@ -43,40 +43,57 @@
             </div>
         </div>
 
+        <script>
+            function f() {
+               let spots = document.getElementsByName("spot")
+                spots.addEventListener("click", function () {
+                    spots.innerText = "X";
+                    console.log("Im working")
+                } )
+            }
+            function changeContentOfSpot() {
+                let spots = document.getElementsByName("spot")
+                this.spot.innerText
+
+
+
+            }
+        </script>
+
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                 <div class="container-fluid game-container">
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="/game-move?move=0" class="btn btn-default square">&nbsp;</a>
+                            <a href="/game-move?move=0" name="spot" id="0" class="btn btn-default square">&nbsp;</a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=1" class="btn btn-default square"><i class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            <a href="/game-move?move=1" name="spot" id="1" class="btn btn-default square"><i class="fa fa-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=2" class="btn btn-default square"><i class="fa fa-times" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <a href="/game-move?move=3" class="btn btn-default square">&nbsp;</a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="/game-move?move=4" class="btn btn-default square">&nbsp;</a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="/game-move?move=5" class="btn btn-default square">&nbsp;</a>
+                            <a href="/game-move?move=2" name="spot" id="2" class="btn btn-default square"><i class="fa fa-times" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="/game-move?move=6" class="btn btn-default square">&nbsp;</a>
+                            <a href="/game-move?move=3" name="spot" id="3" class="btn btn-default square">&nbsp;</a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=7" class="btn btn-default square">&nbsp;</a>
+                            <a href="/game-move?move=4" name="spot" id="4" class="btn btn-default square">&nbsp;</a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="/game-move?move=8" class="btn btn-default square">&nbsp;</a>
+                            <a href="/game-move?move=5" name="spot" id="5" class="btn btn-default square">&nbsp;</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <a href="/game-move?move=6" name="spot" id="6" class="btn btn-default square">&nbsp;</a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="/game-move?move=7" name="spot" id="7" class="btn btn-default square">&nbsp;</a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="/game-move?move=8" name="spot" id="8" class="btn btn-default square">&nbsp;</a>
                         </div>
                     </div>
                 </div>

@@ -15,9 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class FunFactModel {
 
-    @JsonIgnore
-    public String category;
-
     @JsonProperty("value")
     public String value;
 }

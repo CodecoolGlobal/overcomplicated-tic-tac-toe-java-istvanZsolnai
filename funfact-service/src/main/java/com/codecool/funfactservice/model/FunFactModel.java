@@ -1,6 +1,7 @@
 package com.codecool.funfactservice.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,9 @@ import org.springframework.stereotype.Component;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Component
 public class FunFactModel {
+
+    @JsonIgnore
+    public String category;
 
     @JsonProperty("value")
     public String value;

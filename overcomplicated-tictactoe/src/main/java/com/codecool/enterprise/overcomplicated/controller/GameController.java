@@ -21,6 +21,9 @@ public class GameController {
     @Autowired
     private ServiceCaller serviceCaller;
 
+    @Autowired
+    TictactoeGame tictactoeGame;
+
     @ModelAttribute("player")
     public Player getPlayer() {
         return new Player();
@@ -55,7 +58,8 @@ public class GameController {
     }
 
     @GetMapping(value = "/game-move")
-    public String gameMove(@ModelAttribute("player") Player player, @ModelAttribute("move") int move) {
+    public String gameMove(@ModelAttribute("player") Player player, @ModelAttribute("move") String move) {
+        tictactoeGame.putSign(move);
         System.out.println("Player moved " + move);
         return "redirect:/game";
     }

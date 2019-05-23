@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,6 +27,17 @@ public class ServiceCaller {
 
     @Value("${comic.url}")
     private String comicService;
+
+    @Value("${avatar.url}")
+    private String avatarURL;
+
+
+    public URL getAvatar() throws MalformedURLException {
+       // String test = getData(avatarURL);
+        //System.out.println(test);
+
+        return new URL(getData(avatarURL));
+    }
 
 
     public String retrieveComic(){
@@ -71,5 +81,3 @@ public class ServiceCaller {
     }
 
 }
-
-

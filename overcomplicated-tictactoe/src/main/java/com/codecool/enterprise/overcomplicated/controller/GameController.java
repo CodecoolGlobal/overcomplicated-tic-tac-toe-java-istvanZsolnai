@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @Controller
 @SessionAttributes({"player", "game"})
@@ -29,10 +31,11 @@ public class GameController {
         return new TictactoeGame();
     }
 
-    @ModelAttribute("avatar_uri")
-    public String getAvatarUri() {
-        return "https://robohash.org/codecool";
-    }
+    //@ModelAttribute("avatar_uri")
+    //public URL getAvatarUri() throws MalformedURLException {
+      //  URL avatar = serviceCaller.getAvatar();
+        //return avatar;
+    //}
 
     @GetMapping(value = "/")
     public String welcomeView(@ModelAttribute Player player) {

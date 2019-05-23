@@ -26,7 +26,7 @@ public class AvatarService {
     Random random = new Random();
 
     public URL getAvatar() throws MalformedURLException {
-        String avatar = avatarApi + "/" + random.nextInt(1000);
+        String avatar = avatarApi + random.nextInt(1000);
         return new URL(avatar);
     }
 }

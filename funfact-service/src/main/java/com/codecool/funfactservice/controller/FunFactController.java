@@ -15,7 +15,7 @@ public class FunFactController {
     private FunFactService funFactService;
 
     @GetMapping("/random-fact")
-    public FunFactModel getRandomFact() {
+    public Object getRandomFact() {
         return funFactService.getRandomFunFact();
     }
 

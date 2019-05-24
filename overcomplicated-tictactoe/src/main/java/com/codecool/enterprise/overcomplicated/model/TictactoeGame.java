@@ -3,10 +3,71 @@ package com.codecool.enterprise.overcomplicated.model;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @Data
 public class TictactoeGame {
 
+    private char[] board = {'-','-','-',
+                            '-','-','-',
+                            '-','-','-',};
+
+    public void playerMove(int playerMove){
+        if (board[playerMove] == '-'){
+            this.board[playerMove] = 'X';
+        }
+
+    }
+    public void aiMove(int aiMove){
+        if (board[aiMove] == '-'){
+            this.board[aiMove] = 'O';
+        }
+    }
+
+    public boolean checkIfWon(char c){
+        for (int i = 0; i < 2; i++) {
+            if (board[3 * i] == c && board[3 * i + 1] == c && board[3 * i + 2] == c){
+                System.out.println("===GAME WON===");
+                System.out.println("===GAME WON===");
+                return true;
+            }
+        }
+
+        for (int i = 0; i < 2 ; i++) {
+            if (board[i] == c && board[i + 3] == c && board[i + 6] == c)
+                System.out.println("WON IN COLUMNS");
+                return true;
+        }
+
+        if (board[0] == c && board[4] == c && board[8] == c ||
+            board[2] == c && board[4] == c && board[8] == c){
+            return true;
+        }
+        return false;
+    }
+
+    public String getEndgame(){
+        String message;
+
+        if (checkIfWon('X')){
+            message = "Player won";
+            System.out.println("Player won");
+        }
+
+        if (checkIfWon('O')){
+            message = "AI won";
+            System.out.println("AI WON");
+        }
+        else {
+            message = "It's a tie";
+        }
+        return message;
+    }
+
+
+/*
     private  String[] firstRow = new String[3];
     private  String[] secondRow = new String[3];
     private  String[] thirdRow = new String[3];
@@ -62,10 +123,10 @@ public class TictactoeGame {
              "X".equals(firstRow[2]) && "X".equals(secondRow[2]) && "X".equals(thirdRow[2])
 
 
-                /*firstRow[0].equals("X") && firstRow[1].equals("X") && firstRow[2].equals("X") /*||
+                firstRow[0].equals("X") && firstRow[1].equals("X") && firstRow[2].equals("X") ||
             secondRow[0].equals("X") && secondRow[1].equals("X") && secondRow[2].equals("X") ||
             thirdRow[0].equals("X") && thirdRow[1].equals("X") && thirdRow[2].equals("X") ||
-            firstRow[0].equals("X") || secondRow[1].equals("X") && thirdRow[2].equals("X")*/
+            firstRow[0].equals("X") || secondRow[1].equals("X") && thirdRow[2].equals("X")
         ) {
             System.out.println("GAME IS WON");
             System.out.println("GAME IS WON");
@@ -85,6 +146,6 @@ public class TictactoeGame {
         row[1] = "N";
         row[2] = "N";
     }
-
+*/
 
 }

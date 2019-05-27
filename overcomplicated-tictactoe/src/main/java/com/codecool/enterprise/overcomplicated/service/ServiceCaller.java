@@ -1,6 +1,8 @@
 package com.codecool.enterprise.overcomplicated.service;
 
 import com.codecool.enterprise.overcomplicated.model.FunFact;
+import com.codecool.enterprise.overcomplicated.model.Recommendation;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +33,29 @@ public class ServiceCaller {
     @Value("${avatar.url}")
     private String avatarURL;
 
+    @Value("${ai-move.url}")
+    private String aiMove;
+
 
     public URL getAvatar() throws MalformedURLException {
        // String test = getData(avatarURL);
         //System.out.println(test);
 
         return new URL(getData(avatarURL));
+    }
+
+    public int retrieveRecommendation(String gameState, String player) throws IOException {
+        String aiApi = aiMove + "/" + gameState + "/" + player;
+        System.out.println(aiApi);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String recommendation = getData(aiApi);
+        Recommendation aiMove = new Recommendation();
+
+        Recommendation aiRecommendation = objectMapper.readValue(recommendation, Recommendation.class);
+        aiMove.setRecommendation(aiRecommendation.getRecommendation());
+        int aiMoveInt = Integer.parseInt(aiMove.getRecommendation());
+        return aiMoveInt;
+
     }
 
 

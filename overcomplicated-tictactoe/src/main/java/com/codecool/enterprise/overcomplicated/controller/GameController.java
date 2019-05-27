@@ -58,10 +58,15 @@ public class GameController {
     }
 
     @GetMapping(value = "/game-move")
-    public String gameMove(@ModelAttribute("player") Player player, @ModelAttribute("move") int move) {
+    public String gameMove(@ModelAttribute("player") Player player, @ModelAttribute("move") int move) throws IOException {
+        String gameState = tictactoeGame.getBoardString();
+        System.out.println("Game State :  " + gameState);
         tictactoeGame.playerMove(move);
         tictactoeGame.checkIfWon('X');
-
+        int recommendation = serviceCaller.retrieveRecommendation(gameState,"O");
+        tictactoeGame.aiMove(recommendation);
+        System.out.println("Ai placed O On: " + recommendation);
+        tictactoeGame.checkIfWon('O');
         System.out.println("Player moved " + move);
         return "redirect:/game";
     }

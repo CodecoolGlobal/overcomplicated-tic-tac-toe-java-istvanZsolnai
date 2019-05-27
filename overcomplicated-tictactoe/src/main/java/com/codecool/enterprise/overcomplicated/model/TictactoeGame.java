@@ -14,6 +14,11 @@ public class TictactoeGame {
                             '-','-','-',
                             '-','-','-',};
 
+    public String getBoardString(){
+        String boardString = new String(board);
+        return boardString;
+    }
+
     public void playerMove(int playerMove){
         if (board[playerMove] == '-'){
             this.board[playerMove] = 'X';

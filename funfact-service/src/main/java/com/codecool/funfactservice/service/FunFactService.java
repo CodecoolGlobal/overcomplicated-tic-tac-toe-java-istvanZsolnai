@@ -28,7 +28,8 @@ public class FunFactService {
         HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
 
-        ResponseEntity<FunFactModel> funFactResult = restTemplate.exchange(funFactUrl, HttpMethod.GET, entity, FunFactModel.class);
+        ResponseEntity<FunFactModel> funFactResult = restTemplate.exchange(funFactUrl, HttpMethod.GET,
+                entity, FunFactModel.class);
         System.out.println(funFactResult);
         return funFactResult;
     }

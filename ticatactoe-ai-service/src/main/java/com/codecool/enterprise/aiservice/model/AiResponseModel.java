@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 public class AiResponseModel {
 
     @JsonProperty("recommendation")
-    private String recommendation;
+    public String recommendation;
 
 }

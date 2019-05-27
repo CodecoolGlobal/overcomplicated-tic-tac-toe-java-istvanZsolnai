@@ -7,7 +7,6 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 @Service
@@ -19,10 +18,9 @@ public class AiService {
     @Value("${api.url}")
     private String apiURL;
 
-    public ResponseEntity<AiResponseModel> getAiMove(String gameState, String player) throws IOException {
+    public ResponseEntity<AiResponseModel> getAiMove(String gameState, String player){
 
         String aiApi = apiURL + gameState + "/" + player;
-        System.out.println(aiApi + "        asdasdasdasd");
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.add("user-agent", "Moilla/5.0");
@@ -31,7 +29,6 @@ public class AiService {
         ResponseEntity<AiResponseModel> aiMove = restTemplate.exchange(aiApi, HttpMethod.GET,
                 entity, AiResponseModel.class);
 
-        System.out.println( "HEREERERE" +aiMove);
         return aiMove;
 
 

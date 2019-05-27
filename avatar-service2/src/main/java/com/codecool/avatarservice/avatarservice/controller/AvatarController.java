@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
 @RestController
 public class AvatarController {
@@ -15,7 +14,7 @@ public class AvatarController {
     private AvatarService avatarService;
 
     @GetMapping("/get-avatar")
-    public URL getRandomAvatar() throws MalformedURLException {
+    public String getRandomAvatar() throws MalformedURLException {
         return avatarService.getAvatar();
     }
 

@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 @Controller
-@SessionAttributes({"player", "game"})
+@SessionAttributes({"player", "game", "avatar_uri"})
 @Data
 public class GameController {
 
@@ -34,11 +34,11 @@ public class GameController {
         return new TictactoeGame();
     }
 
-    //@ModelAttribute("avatar_uri")
-    //public URL getAvatarUri() throws MalformedURLException {
-      //  URL avatar = serviceCaller.getAvatar();
-        //return avatar;
-    //}
+    @ModelAttribute("avatar_uri")
+    public String getAvatarUri() {
+        String avatar = serviceCaller.getAvatar();
+        return avatar;
+    }
 
     @GetMapping(value = "/")
     public String welcomeView(@ModelAttribute Player player) {
@@ -62,11 +62,11 @@ public class GameController {
         String gameState = tictactoeGame.getBoardString();
         System.out.println("Game State :  " + gameState);
         tictactoeGame.playerMove(move);
-        tictactoeGame.checkIfWon('X');
+        tictactoeGame.getEndgame();
         int recommendation = serviceCaller.retrieveRecommendation(gameState,"O");
         tictactoeGame.aiMove(recommendation);
         System.out.println("Ai placed O On: " + recommendation);
-        tictactoeGame.checkIfWon('O');
+        tictactoeGame.getEndgame();
         System.out.println("Player moved " + move);
         return "redirect:/game";
     }

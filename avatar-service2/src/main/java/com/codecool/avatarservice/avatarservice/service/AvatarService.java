@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Random;
 
 @Service
@@ -25,8 +24,8 @@ public class AvatarService {
 
     Random random = new Random();
 
-    public URL getAvatar() throws MalformedURLException {
+    public String getAvatar(){
         String avatar = avatarApi + random.nextInt(1000);
-        return new URL(avatar);
+        return avatar;
     }
 }

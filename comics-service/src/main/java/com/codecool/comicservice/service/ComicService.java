@@ -26,7 +26,7 @@ public class ComicService {
     RestTemplate restTemplate;
 
     public String getComic() throws IOException {
-        String url = apiLink + "/" + random.nextInt(1930) + "/info.0.json";
+        String url = apiLink + "/" + random.nextInt(1929) + "/info.0.json";
         System.out.println(url);
 
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);

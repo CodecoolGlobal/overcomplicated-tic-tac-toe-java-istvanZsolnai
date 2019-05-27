@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-
 @RestController
 public class AiController {
 
@@ -18,7 +16,7 @@ public class AiController {
 
         @GetMapping("/get-response/{game-state}/{player}")
     public ResponseEntity<AiResponseModel> getResponse(@PathVariable("game-state")String gameState,
-                                                        @PathVariable("player")String player) throws IOException {
+                                                        @PathVariable("player")String player) {
             System.out.println(gameState);
             System.out.println(player);
 
